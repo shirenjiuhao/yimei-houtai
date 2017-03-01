@@ -1,0 +1,74 @@
+<div id="header">
+    <span class="header-name">医疗后台</span>
+    <select id="status" ng-if="data.flag">
+        <option>在线</option>
+        <option selected>空闲</option>
+        <option>忙碌</option>
+        <option>离线</option>
+    </select>
+    <span>咨询师：</span>
+    <select id="user">
+        <option>json</option>
+        <option selected>admin</option>
+        <option>html</option>
+        <option>java</option>
+    </select>
+</div>
+<div class="content">
+    <div class="aside">
+        <div class="aside-title">
+            <span>会话</span>
+            <i class="index-cir"></i>
+        </div>
+        <ul class="aside-select">
+            <li><a href="#/today">当前会话</a></li>
+            <li><a href="#/late">历史会话</a></li>
+        </ul>
+    </div>
+    <div class="content-left">
+        <div class="content-left-title"><span>{{data.aside}}</span>
+            <select id="date">
+                <option ng-repeat="x in data.aside_date"
+                       ng-selected={{x.flag}} >{{x.time}}</option>
+            </select>
+        </div>
+        <ul class="content-left-data">
+            <li class="t-header">
+                <span ng-repeat="x in data.title_data">{{x.text}}</span>
+            </li>
+            <li class="t-header" ng-repeat="items in data.text_data" ng-click="popCenterWindow()">
+                <span ng-repeat="value in items.list">{{value}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="window" id="center">
+    <div class="window_left">
+        <div id="title" class="title">医美 <span>x</span></div>
+        <div class="window_content">
+            <div class="lianxiren">
+                <select id="li_sta">
+                    <option>已解决</option>
+                    <option>未解决</option>
+                </select>
+                <span>转接至：李敏</span>
+            </div>
+            <div class="window_chat">
+                <div class="window-chat-time">
+                    <div>01-09 15:03 用户进入</div>
+                    <div>由心理美容01接待</div>
+                </div>
+                <div class="window-chat-txt">
+                    <div>
+                        您好我是您的专属咨询师，您好我是您的专属咨询师，
+                    </div>
+                    <img src="" alt="正在加载"/>
+                </div>
+            </div>
+            <div class="window-chat-input">已结束会话</div>
+        </div>
+    </div>
+    <div class="window_right">
+
+    </div>
+</div>
