@@ -1,7 +1,11 @@
 
 {
     "aside":"历史会话",
-    "flag":false,
+    "status_flag":false,
+    "history_flag":false,
+    "name_flag":true,
+    "chat_flag":false,
+    "window_right_flag":false,
     "aside_date":[
         {
         "time":"01月23日",

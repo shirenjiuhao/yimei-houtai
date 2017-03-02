@@ -9,13 +9,20 @@ angular.module('app.controllers',['app.servers'])
         }
         todayServer.getData(callback,url);
         /*------------------------------------------------------*/
-        var selected = $('.window_right_title').find('span');
-        $scope.isShow = true;
-        selected.click( function () {
-            $scope.isShow = true ? false : true;
-            $(this).addClass('window_right_select').siblings().removeClass('window_right_select')
-        });
-        /*===========================*/
+        $scope.isShow = function () {
+            return true;
+        };
+        $scope.change1 = function () {
+            $scope.isShow = function () {
+                return true;
+            };
+        };
+        $scope.change2 = function () {
+            $scope.isShow = function () {
+                return false;
+            };
+        }
+        /*聊天发送数据===========================*/
         $scope.sendPrivateText = function () {
             var messages = $('#info_text').val();
             console.log(messages);
@@ -41,7 +48,7 @@ angular.module('app.controllers',['app.servers'])
             conn.send(msg.body);
         }
         /*===============================*/
-        /*----------------------------------------------------*/
+        /*弹出窗口----------------------------------------------------*/
         var windowHeight;
         //获取窗口的宽度
         var windowWidth;
@@ -78,6 +85,21 @@ angular.module('app.controllers',['app.servers'])
             $scope.data = data;
         }
         lateServer.getData(callback,url);
+        /*-----------------------------------------------*/
+        $scope.isShow = function () {
+            return true;
+        };
+        $scope.change1 = function () {
+            $scope.isShow = function () {
+                return true;
+            };
+        };
+        $scope.change2 = function () {
+            $scope.isShow = function () {
+                return false;
+            };
+        }
+        /*-----------------------------------------------------*/
         var windowHeight;
         //获取窗口的宽度
         var windowWidth;
@@ -123,7 +145,6 @@ angular.module('app.controllers',['app.servers'])
                 appKey: WebIM.config.appkey,
                 success: function (token) {
                     alert('登陆成功');
-                    $('#login-btn').attr('href','#/today');
                     /* var token = token.access_token;
                      WebIM.utils.setCookie('webim_' + encryptUsername, token, 1);*/
                 },

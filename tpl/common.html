@@ -1,6 +1,6 @@
 <div id="header">
     <span class="header-name">医疗后台</span>
-    <select id="status" ng-if="data.flag">
+    <select id="status" ng-if="data.status_flag">
         <option>在线</option>
         <option selected>空闲</option>
         <option>忙碌</option>
@@ -18,7 +18,7 @@
     <div class="aside">
         <div class="aside-title">
             <span>会话</span>
-            <i class="index-cir"></i>
+            <i class="index-cir-active"></i>
         </div>
         <ul class="aside-select">
             <li><a href="#/today">当前会话</a></li>
@@ -49,9 +49,9 @@
             <div class="lianxiren">
                 <select id="li_sta">
                     <option>已解决</option>
-                    <option selected>有效对话</option>
+                    <option ng-selected="data.history_flag">有效对话</option>
                 </select>
-                <span>转接至：李敏</span>
+                <span ng-if="data.name_flag">转接至：李敏</span>
             </div>
             <div class="window_chat">
                 <div class="window-chat-time">
@@ -78,19 +78,19 @@
                     <img ng-src="img/WechatIMG8.png" alt="正在加载"/>
                 </div>
             </div>
-            <div class="window-chat-input">
+            <div class="window-chat-input" ng-if="data.chat_flag">
                 <input type="text" id="info_text"/>
-                <button ng-click="sendPrivateText()">发送</button>
+                <button ng-click="sendPrivateText()" ng-keydown="">发送</button>
             </div>
-            <div class="window-chat-input-close" ng-if="false">已结束会话</div>
+            <div class="window-chat-input-close" ng-if="!data.chat_flag">已结束会话</div>
         </div>
     </div>
-    <div class="window_right">
+    <div class="window_right" ng-if="data.window_right_flag">
         <div class="window_right_title">
-            <span class="window_right_select" ng-click="">用户信息</span>
-            <span>制定方案</span>
+            <span ng-class="{true:'window_right_select',false:''}[isShow()]" ng-click="change1()">用户信息</span>
+            <span ng-class="{true:'window_right_select',false:''}[!isShow()]" ng-click="change2()">制定方案</span>
         </div>
-        <div class="window_right_info" ng-if="isShow">
+        <div class="window_right_info" ng-if="isShow()">
             <div class="window_right_msg">
                 <div><i class="window_right_icon"></i>个人信息</div>
                 <div>姓名：1498</div>
@@ -103,7 +103,44 @@
                 <div ng-if="true" style="color:#999;margin-top: 50px;">暂无数据记录</div>
             </div>
         </div>
-        <div class="window_right_info" ng-if="!isShow">
+        <div class="window_right_info" ng-if="!isShow()">
+            <div class="window_right_msg1">
+                <div>名称：润白眼玻尿酸1M</div>
+                <div>手机号：13634982345</div>
+                <div>治疗时长：10分钟</div>
+                <div>技术理念：李敏页面详情</div>
+                <div>治疗效果：李敏页面详情</div>
+                <div>项目优势：李敏页面详情</div>
+                <div>价格：李敏页面详情</div>
+            </div>
+            <div class="window_right_msg1">
+                <div class="window_right_btn">
+                    <span>+</span>添加方案
+                </div>
+            </div>
+            <div class="window_right_msg1">
+                <div class="window_right_price">
+                    <span>总价：￥148.00</span>
+                    <button>确认方案</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="window_right" ng-if="!data.window_right_flag">
+        <div class="window_right_title">
+            <span ng-class="{true:'window_right_select',false:''}[isShow()]" ng-click="change1()">用户信息</span>
+            <span ng-class="{true:'window_right_select',false:''}[!isShow()]" ng-click="change2()">需求详情</span>
+        </div>
+        <div class="window_right_info" ng-if="isShow()">
+            <div class="window_right_msg">
+                <div>个人信息</div>
+                <div>姓名：1498</div>
+                <div>手机号：13634982345</div>
+                <div>IP地址：北京</div>
+                <div>来源页面：李敏页面详情</div>
+            </div>
+        </div>
+        <div class="window_right_info" ng-if="!isShow()">
             <div class="window_right_msg1">
                 <div>名称：润白眼玻尿酸1M</div>
                 <div>手机号：13634982345</div>
