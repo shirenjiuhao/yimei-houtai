@@ -49,7 +49,7 @@
             <div class="lianxiren">
                 <select id="li_sta">
                     <option>已解决</option>
-                    <option>未解决</option>
+                    <option selected>有效对话</option>
                 </select>
                 <span>转接至：李敏</span>
             </div>
@@ -59,16 +59,71 @@
                     <div>由心理美容01接待</div>
                 </div>
                 <div class="window-chat-txt">
-                    <div>
-                        您好我是您的专属咨询师，您好我是您的专属咨询师，
+                    <img ng-src="img/WechatIMG8.png" alt="正在加载"/>
+                    <div class="window-chat-txt-left">
+                        您好我是您的专属咨询师，您好我是您的专属咨询师,
+                        您好我是您的专属咨询师，您好我是您的专属咨询师
                     </div>
-                    <img src="" alt="正在加载"/>
+                </div>
+                <div class="window-chat-txt">
+                    <div class="window-chat-txt-right">
+                        您好我是您的专属咨询师，您好我是您的专属咨询师
+                    </div>
+                    <img ng-src="img/WechatIMG8.png" alt="正在加载"/>
+                </div>
+                <div class="window-chat-txt">
+                    <div class="window-chat-txt-right">
+                        您好我是您的专属咨询师，您好我是您的专属咨询师
+                    </div>
+                    <img ng-src="img/WechatIMG8.png" alt="正在加载"/>
                 </div>
             </div>
-            <div class="window-chat-input">已结束会话</div>
+            <div class="window-chat-input">
+                <input type="text" id="info_text"/>
+                <button ng-click="sendPrivateText()">发送</button>
+            </div>
+            <div class="window-chat-input-close" ng-if="false">已结束会话</div>
         </div>
     </div>
     <div class="window_right">
-
+        <div class="window_right_title">
+            <span class="window_right_select" ng-click="">用户信息</span>
+            <span>制定方案</span>
+        </div>
+        <div class="window_right_info" ng-if="isShow">
+            <div class="window_right_msg">
+                <div><i class="window_right_icon"></i>个人信息</div>
+                <div>姓名：1498</div>
+                <div>手机号：13634982345</div>
+                <div>IP地址：北京</div>
+                <div>来源页面：李敏页面详情</div>
+            </div>
+            <div class="window_right_msg">
+                <div><i class="window_right_icon"></i>历史记录</div>
+                <div ng-if="true" style="color:#999;margin-top: 50px;">暂无数据记录</div>
+            </div>
+        </div>
+        <div class="window_right_info" ng-if="!isShow">
+            <div class="window_right_msg1">
+                <div>名称：润白眼玻尿酸1M</div>
+                <div>手机号：13634982345</div>
+                <div>治疗时长：10分钟</div>
+                <div>技术理念：李敏页面详情</div>
+                <div>治疗效果：李敏页面详情</div>
+                <div>项目优势：李敏页面详情</div>
+                <div>价格：李敏页面详情</div>
+            </div>
+            <div class="window_right_msg1">
+                <div class="window_right_btn">
+                    <span>+</span>添加方案
+                </div>
+            </div>
+            <div class="window_right_msg1">
+                <div class="window_right_price">
+                    <span>总价：￥148.00</span>
+                    <button>确认方案</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

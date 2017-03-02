@@ -2,7 +2,7 @@
  * Created by Administrator on 2017/3/1.
  */
 angular.module('app',['app.controllers','ngRoute'])
-    .config(['$routeProvider', function ($routeProvider) {
+    .config(['$routeProvider','$rootScopeProvider', function ($routeProvider,$rootScopeProvider) {
         $routeProvider
             .when('/today',{
                 templateUrl:'tpl/common.html',
@@ -12,5 +12,10 @@ angular.module('app',['app.controllers','ngRoute'])
                 templateUrl:'tpl/common.html',
                 controller:'lateCtrl'
             })
-        .otherwise({redirectTo:'/today'});
+            .when('/login',{
+                templateUrl:'tpl/login.html',
+                controller:'loginCtrl'
+            })
+        .otherwise({redirectTo:'/login'});
     }])
+
